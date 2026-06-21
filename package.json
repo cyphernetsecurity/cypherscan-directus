@@ -2,17 +2,27 @@
   "name": "cypherscan-directus",
   "version": "0.1.0",
   "description": "Directus extension for scanning uploaded files with CypherScan.",
+  "type": "module",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
-    "dist"
+    "dist",
+    "README.md"
   ],
   "scripts": {
     "build": "tsc",
     "dev": "tsc --watch"
   },
+  "directus:extension": {
+    "type": "hook",
+    "path": "dist/index.js",
+    "source": "src/index.ts",
+    "host": "^13.0.0"
+  },
   "keywords": [
     "directus",
+    "directus-extension",
+    "directus-hook",
     "cypherscan",
     "malware",
     "security",
