@@ -1,33 +1,50 @@
 # CypherScan Directus
 
-Scan uploaded files with CypherScan before they reach production workflows.
+Directus extension for scanning uploaded files with CypherScan before they reach production workflows.
+
+## Links
+
+- npm: https://www.npmjs.com/package/cypherscan-directus
+- GitHub: https://github.com/cyphernetsecurity/cypherscan-directus
+- CypherScan: https://cyphernetsecurity.com
+
+---
 
 ## Features
 
-* Malware scanning
-* ClamAV detection
-* Upload security
-* S3-based scanning pipeline
-* Optional blocking of infected files
-* Directus hook integration
-* CypherScan API support
+- Malware scanning
+- ClamAV detection
+- Upload security
+- S3-based scanning pipeline
+- Optional blocking of infected files
+- Directus hook integration
+- CypherScan API support
+
+---
 
 ## Installation
+
+Install the package:
+
+```bash
+npm install cypherscan-directus
+```
 
 Build the extension:
 
 ```bash
-npm install
 npm run build
 ```
 
-Copy the extension into your Directus instance:
+Copy the built extension into your Directus project:
 
 ```text
-extensions/hooks/cypherscan-directus
+extensions/directus-extension-cypherscan
 ```
 
 Restart Directus.
+
+---
 
 ## Configuration
 
@@ -71,7 +88,9 @@ false
 
 uploads are scanned but retained.
 
-## How it Works
+---
+
+## How It Works
 
 1. User uploads a file to Directus
 2. Extension receives the upload event
@@ -80,6 +99,8 @@ uploads are scanned but retained.
 5. A verdict is returned
 6. Optional blocking removes infected files
 
+---
+
 ## Example Log
 
 ```text
@@ -87,6 +108,31 @@ uploads are scanned but retained.
 [cypherscan-directus] result: invoice.pdf verdict=clean blocked=false
 ```
 
+---
+
+## Example Scan Response
+
+```json
+{
+  "verdict": "clean",
+  "blocked": false,
+  "scanId": "sc_xxxxxxxxxxxxxxxxx",
+  "riskLevel": "low"
+}
+```
+
+---
+
+## Requirements
+
+- Directus
+- CypherScan API Key
+- Internet access for scan requests
+
+---
+
 ## License
 
 MIT
+
+Copyright (c) CypherNet Security
